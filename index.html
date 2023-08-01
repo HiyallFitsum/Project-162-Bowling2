@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shooting Game in Virtual Reality</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>   
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+
+    <script src="./gameObject.js"></script>
+    <script src="./bowl.js"></script>
+  </head>
+  <body>
+    <a-scene id="scene" background="color: skyblue" bowling>
+
+      <!--Assets-->
+      <a-assets>        
+        <a-asset-item
+          id="bowlingBall"
+          src="./models/bowling_ball/scene.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="bowlingPins"
+          src="./models/bowling_pin/scene.gltf"
+        ></a-asset-item>
+
+      </a-assets>
+      
+      <!--Light-->
+      <!-- <a-entity light="type: ambient; color: yellow; intensity:0.5"></a-entity> -->
+
+      <!--Camera and Cursor-->
+        <a-entity
+          id="camera"
+          camera
+          position="-1.5 1 10 "
+          wasd-controls
+          look-controls="pointerLockEnabled: false"        
+        >
+
+          <a-cursor></a-cursor>  
+
+        </a-entity>
+
+     <!--Pins-->
+      <a-entity id="pins" bowling-pins>
+
+      </a-entity>
+
+      <!--Ground-->
+      <a-plane
+        id="ground"
+        repeat="5 5"
+        position="0 0 0"
+        rotation="-90 0 0"
+        height="200"
+        width="200"
+        color="grey"
+        static-body
+        visible="true"
+      >
+      </a-plane>
+
+      <a-box
+      class="border"
+      position="6 0 0"
+      depth="50"
+      height="3"
+      color="red"
+      ></a-box>
+
+      <a-box
+      class="border"
+      position="-8 0 0"
+      depth="50"
+      height="3"
+      rotation="0 -10 0"
+      color="red"
+      ></a-box>
+
+      <a-box
+      width="16"
+      depth="5"
+      position="0 5 -6"
+      color="black"
+      ></a-box>
+
+      <a-box
+      id="wall"
+      width="12"
+      height="7"
+      position="0 3 -9"
+      opacity="0.75"
+      color="green"
+      static-body = "mass: 1"
+      ></a-box>
+
+      <a-box
+      width="1"
+      height="8"
+      position="-6.5 2 -9"
+      color="black"
+      ></a-box>
+
+      <a-box
+      width="1"
+      height="8"
+      position="6.5 2 -9"
+      color="black"
+      ></a-box>
+
+      <a-entity id="header" position="0 0 0">
+        <a-entity 
+        position= "0 8 0"
+        text="font: exo2bold; align: center; width: 40; color: black; value: Bowling Simulator">
+        </a-entity>
+  
+        <a-entity 
+        id="pinsLeft"
+        position= "-4 6 0"
+        text="font: exo2bold; align: center; width: 30; color: black; value: 10">
+        </a-entity>
+        <a-entity 
+        position= "0 6 0"
+        text="font: aileronsemibold; width: 20; color: black; value: PINS\nREMAINING:">
+        </a-entity>
+  
+        <a-entity 
+        id="score"
+        position= "6 6.125 0"
+        text="font: exo2bold; align: center; width: 30; color: black; value: 0">
+        </a-entity>
+        <a-entity 
+        position= "12 6 0"
+        text="font: aileronsemibold; width: 20; color: black; value: SCORE:">
+        </a-entity>
+  
+      </a-entity>
+
+
+        </a-scene>
+    </body>
